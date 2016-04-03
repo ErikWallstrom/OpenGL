@@ -1,18 +1,20 @@
-#ifndef MESH_H
-#define MESH_H
+#import "Base.h"
+#import "Vector3f.h"
+#import <GL/glew.h>
 
-#include <GL/glew.h>
-#include "Vector3f.h"
-
-typedef struct
+@interface Mesh : Base
 {
+	enum
+	{
+		POSITION_INDEX,
+		NUM_BUFFERS
+	} Constants;
+
 	GLuint array_object;
-	GLuint buffer_object;
+	GLuint buffer_objects[NUM_BUFFERS];
 	size_t num_vertices;
+}
 
-} Mesh;
-
-Mesh Mesh_create(Vector3f* vertices, size_t num);
-void Mesh_destroy(Mesh* self);
-
-#endif 
++(id) new: (Vector3f*)vertices n: (size_t)num;
+-(void) render;
+@end

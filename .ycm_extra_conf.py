@@ -43,14 +43,15 @@ flags = [
 '-Wconversion',
 '-Wunreachable-code'
 '-std=c11',
+'-fconstant-string-class=String',
 # ...and the same thing goes for the magic -x option which specifies the
 # language that the files to be compiled are written in. This is mostly
 # relevant for c++ headers.
 # For a C project, you would set this to 'c' instead of 'c++'.
 '-x',
-'c',
+'objective-c',
 '-I/usr/include',
-'-I/usr/local/include'
+'-I/usr/local/include',
 '-I/usr/lib/gcc/x86_64-linux-gnu/4.9/include'
 ]
 

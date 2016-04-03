@@ -1,6 +1,7 @@
-#ifndef ERROR_H
-#define ERROR_H
+#import "Base.h"
+#import "String.h"
 
-void Error(const char* format, ...);
-
-#endif
+@interface Error : Base
++(void) show: (String*)message;
++(void) log: (String*)message;
+@end

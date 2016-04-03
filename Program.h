@@ -1,17 +1,24 @@
-#ifndef SHADER_H
-#define SHADER_H
-
+#import "Base.h"
+#import "String.h"
+#include <SDL2/SDL.h>
 #include <GL/glew.h>
 
-typedef struct
+@interface Program : Base
 {
-	GLuint raw;
+	SDL_Event event;
+	SDL_Window* window;
+	SDL_GLContext context;
+
+	GLuint shader_program;
 	GLuint vertex_shader;
 	GLuint fragment_shader;
+}
 
-} Program;
-
-Program Program_create(const char* vertex_path, const char* fragment_path);
-void Program_destroy(Program* self);
-
-#endif
+-(void) create_window: (String*)title 
+					w:(int)width 
+					h:(int)height;
+-(SDL_Window*) get_window;
+-(void) load_shaders: (String*)v_path 
+				   f: (String*)f_path;
+-(int) update;
+@end
